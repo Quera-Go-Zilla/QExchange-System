@@ -178,7 +178,7 @@ func (s *tradeService) CloseTradeWithTrade(
 		return statusCode, errors.New("error in banking operations")
 	}
 
-	newClosedTrade := openTrade.ToCloseTrade(crypto.SellFee)
+	newClosedTrade := openTrade.ToCloseTrade(crypto.SellFee, amount)
 	s.db.Save(&newClosedTrade)
 
 	return http.StatusOK, nil

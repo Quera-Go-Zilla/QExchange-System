@@ -26,11 +26,12 @@ func (OpenTrade) TableName() string {
 
 func (openTrade OpenTrade) ToCloseTrade(
 	sellFee int,
+	amount  int,
 ) ClosedTrade {
 	return ClosedTrade{
 		UserID:   openTrade.UserID,
 		CryptoID: openTrade.CryptoID,
-		Amount:   openTrade.Amount,
+		Amount:   amount,
 		BuyFee:   openTrade.BuyFee,
 		SellFee:  sellFee,
 		Profit:   profitCalculation(openTrade.Amount, openTrade.BuyFee, sellFee),
